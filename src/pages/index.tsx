@@ -1,11 +1,11 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import Prismic from '@prismicio/client'
 
-import React from 'react';
+import { FiCalendar, FiUser } from 'react-icons/fi';
 
 import { getPrismicClient } from '../services/prismic';
 
-import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
 
 interface Post {
@@ -31,16 +31,49 @@ interface HomeProps {
    return (
      <>
       <Head>
-        <title>Inicio | Spacetraveling</title>
+        <title>Posts | Spacetraveling</title>
       </Head>
+
+      <main className={styles.container}>
+        <div className={styles.posts}>
+          <a href="#">
+            <strong>Creating a monorepo</strong>
+            <p>Lorem ipsum dolor sit amet, consectetur adip</p>
+            <span><FiCalendar /> Data</span>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <span><FiUser /> Autor</span>
+          </a>
+          <a href="#">
+            <strong>Creating a monorepo</strong>
+            <p>Lorem ipsum dolor sit amet, consectetur adip</p>
+            <span><FiCalendar/> Data</span>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <span><FiUser /> Autor</span>
+          </a>
+          <a href="#">
+            <strong>Creating a monorepo</strong>
+            <p>Lorem ipsum dolor sit amet, consectetur adip</p>
+            <span><FiCalendar/> Data</span>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <span><FiUser /> Autor</span>
+          </a>
+         <button>
+           Carregar mais posts
+         </button>
+        </div>
+      </main>
     </>
    )
  }
 
-// export const getStaticProps = async () => {
-//   // const prismic = getPrismicClient();
-//   // const postsResponse = await prismic.query(TODO);
+ export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient()
 
-//   // TODO
-//   return;
-// };
+  const postsResponse = await prismic.query([
+    Prismic.Predicates.at('document.type', 'posts')
+  ], {
+    fetch: ['posts.title', 'posts.content'],
+    pageSize: 100,
+  })
+
+  return {
+    props: {}
+  };
+};

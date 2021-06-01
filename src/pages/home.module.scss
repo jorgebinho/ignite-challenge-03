@@ -1,1 +1,48 @@
-// TODO
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.posts {
+  max-width: 700px;
+
+  a {
+    display: block;
+
+    & + a {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+    }
+  }
+
+  strong {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 2rem;
+  }
+
+  p {
+    color: var(--gray-100);
+  }
+
+  span {
+    color: var(--gray-200);
+    font-size: 14px;
+  }
+
+  button {
+    color: var(--pink);
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-top: 3rem;
+    border: 0;
+    background: transparent;
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.7);
+    }
+  }
+}

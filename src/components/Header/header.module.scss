@@ -1,11 +1,19 @@
 .headerContainer {
-  height: 5rem;
+  height: 6rem;
 }
 
 .headerContent {
-  position: absolute;
-  width: 238.62px;
-  height: 25.63px;
-  left: 372px;
-  top: 79.55px;
+  max-width: 1120px;
+  height: 100%;
+
+  margin: 0 auto;
+  padding: 0 1.25rem;
+
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 1.5rem;
+    cursor: pointer;
+  }
 }
